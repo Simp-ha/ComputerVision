@@ -1,14 +1,10 @@
 import cv2
-from cv2 import imread, cvtColor, COLOR_BGR2GRAY, imshow, waitKey
+import numpy as np
+from cv2 import imread, imshow, waitKey
 from numpy import zeros_like, ravel, sort, multiply, divide, int8
 
 
 def median_filter(gray_img, mask=3):
-    """
-    :param gray_img: gray image
-    :param mask: mask size
-    :return: image with median filter
-    """
     # set image borders
     bd = int(mask / 2)
     # copy image size
@@ -23,11 +19,23 @@ def median_filter(gray_img, mask=3):
     return median_img
 
 
+def integral(image):
+    # Creating table with the same dimension
+    rows, columns =  image.shape
+    integ_img = np.zeros((rows+1, columns+1), dtype=image.dtype).astype(float)
+    for x in range(1,len(integ_img)):
+        for y in range(1, len(integ_img[0])):
+            integ_img[x, y] = image[x-1, y-1] + integ_img[x, y-1] + integ_img[x-1, y] - integ_img[x-1, y-1]
+    yes = integ_img
+    return integ_img
+
+
 def recognition(image, threshold):
+
     # Create rectangular structuring element and dilate
     kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
     dilate = cv2.dilate(threshold, kernel, iterations=20)
-    dilateW = cv2.dilate(threshold, kernel, iterations=6)
+    dilateW = cv2.dilate(threshold, kernel, iterations=5)
 
     # Find contours and draw rectangle
     cnts = cv2.findContours(dilate, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
@@ -39,39 +47,45 @@ def recognition(image, threshold):
     i = len(cnts)
     iW = len(cntsW)
 
-
+    # Integral Image
+    grayConv = cv2.cvtColor(imgOG, cv2.COLOR_BGR2GRAY)
+    integral_image = integral(grayConv)
 
     # Looping through the array of contours
     for c in cnts:
         # (x, y) = pixels, w = width, h = height
         x, y, w, h = cv2.boundingRect(c)
 
-        #Width and Height of the rectangle
+        # Width and Height of the rectangle
         W = x + w
         H = y + h
         cv2.rectangle(image, (x, y), (W, H), (0, 0, 255), 3)
 
-        # Calculating area of pixels
-        p = 0
-        words = 0
+        # Integral Image
+        MeanValue = (integral_image[y, x] + integral_image[H, W] - integral_image[y, W] - integral_image[H, x]) / (w*h)
 
+        # Counting Pixels of words
+        p = 0
         for axes_x in range(x, W):
             for axes_y in range(y, H):
                 if threshold[axes_y, axes_x] == 255:
                     p += 1
 
+        # Counting words
+        words = 0
         for kappa in cntsW:
             xw, yw, ww, hw = cv2.boundingRect(kappa)
-            if (xw < x and yw < y) and (xw+ww < W and  yw+hw < H):
+            if xw >= x and yw >= y and xw + ww <= W and yw + hw <= H:
                 words += 1
-                # Reading every word
 
         # Putting text for every rectangle that is created above
         cv2.putText(image, f'{i}', (x + 10, y + 100), cv2.FONT_HERSHEY_SCRIPT_SIMPLEX, 4, (0, 0, 255), 4)
-        print("ALL words "f'{i}', iW)
-        print("Num of words "f'{i}', words)
-        print("Boarding Area "f'{i}', w * h)
-        print("Area "f'{i}', p, "\n")
+        print("-------Region "f'{i}-------')
+        print("ALL words: ", iW)
+        print("Num of words: ", words)
+        print("Boarding Area: ", w * h)
+        print("Area: ", p)
+        print("Mean gray-level value in bounding box: ", MeanValue,"\n")
 
         # Counting down the number of rectangles
         i = i - 1
@@ -86,43 +100,43 @@ def recognition(image, threshold):
 
     return image
 
-def integral (image):
-    for x in  range(image):
-        print(x)
-    return
 
 if __name__ == "__main__":
     # Read original image
-    img = imread("1_noise.png")
-    imgOG = imread("1_original.png")
-    # Turn image in gray scale value
-    gray = cv2.imread("1_noise.png", cv2.IMREAD_GRAYSCALE)
-    grayOG = cv2.imread("1_original.png", cv2.IMREAD_GRAYSCALE)
+    for i in range(4, 6):
+        # img = imread(f'{i}'"_noise.png")
+        imgOG = imread(f'{i}'"_original.png")
 
-    # Get values with two different mask size
-    # median3x3 = median_filter(gray, 3)
+        # Turn image in gray scale value
+        gray = cv2.imread(f'{i}'"_noise.png", cv2.IMREAD_GRAYSCALE)
+        grayOG = cv2.imread(f'{i}'"1_original.png", cv2.IMREAD_GRAYSCALE)
 
-    # Show result images
-    cv2.namedWindow('median filter with 3x3 mask', cv2.WINDOW_NORMAL)
-    imshow("median filter with 3x3 mask", imgOG)
-    cv2.waitKey(0)
+        # Get values with two different mask size
+        # median3x3 = median_filter(gray, 3)
 
-    # Binary threshold
-    _, thr1 = cv2.threshold(imgOG, 200, 255, cv2.THRESH_BINARY)
-    cv2.namedWindow('thresh_binary', cv2.WINDOW_NORMAL)
-    imshow("thresh_binary", thr1)
-    cv2.waitKey(0)
+        # Show result images
+        cv2.namedWindow('median filter with 3x3 mask', cv2.WINDOW_NORMAL)
+        imshow("median filter with 3x3 mask", imgOG)
+        cv2.waitKey(0)
 
-    # Converting color to gray and setting new threshold
-    gray1 = cv2.cvtColo    
-    # Starting the recognition
-    #rectangle = recognition(imgOG, thresh)
+        # Binary threshold
+        _, thr = cv2.threshold(imgOG, 200, 255, cv2.THRESH_BINARY)
+        cv2.namedWindow('thresh_binary', cv2.WINDOW_NORMAL)
+        imshow("thresh_binary", thr)
+        cv2.waitKey(0)
 
-    # Integral
-    integ = integral(imgOG)
+        # Converting color to gray and setting new threshold
+        grayConv = cv2.cvtColor(imgOG, cv2.COLOR_BGR2GRAY)
+        _, thr2 = cv2.threshold(grayConv, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
+        cv2.namedWindow('thresh_binary', cv2.WINDOW_NORMAL)
+        imshow("thresh_binary", thr2)
+        # cv2.waitKey(0)
 
-    # Showing the results of the image recognition
-    cv2.namedWindow('results', cv2.WINDOW_NORMAL)
-    cv2.imshow('results', integ)
-    cv2.waitKey(0)
-    waitKey(0)
+        # Recognition of text and making rectangles around them
+        rectangle = recognition(imgOG, thr2)
+
+        # Showing the results of the image recognition
+        cv2.namedWindow('results', cv2.WINDOW_NORMAL)
+        cv2.imshow('results', rectangle)
+        cv2.waitKey(0)
+        waitKey(0)
