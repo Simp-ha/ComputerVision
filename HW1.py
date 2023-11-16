@@ -4,17 +4,17 @@ from cv2 import imread, imshow, waitKey
 from numpy import zeros_like, ravel, sort, multiply, divide, int8
 
 
-def median_filter(gray_img, mask=3):
+def median_filter(gray_img):
     # set image borders
-    bd = int(mask / 2)
+    bd = int(3/2)
     # copy image size
     median_img = zeros_like(gray_img)
     for i in range(bd, gray_img.shape[0] - bd):
         for j in range(bd, gray_img.shape[1] - bd):
-            # get mask according to mask
+            # Building kernel
             kernel = ravel(gray_img[i - bd: i + bd + 1, j - bd: j + bd + 1])
-            # calculate mask median
-            median = sort(kernel)[int8(divide((multiply(mask, mask)), 2) + 1)]
+            # Calculate median mask
+            median = sort(kernel)[int8(divide((multiply(3, 3)), 2) + 1)]
             median_img[i, j] = median
     return median_img
 
@@ -26,7 +26,6 @@ def integral(image):
     for x in range(1,len(integ_img)):
         for y in range(1, len(integ_img[0])):
             integ_img[x, y] = image[x-1, y-1] + integ_img[x, y-1] + integ_img[x-1, y] - integ_img[x-1, y-1]
-    yes = integ_img
     return integ_img
 
 
@@ -48,7 +47,7 @@ def recognition(image, threshold):
     iW = len(cntsW)
 
     # Integral Image
-    grayConv = cv2.cvtColor(imgOG, cv2.COLOR_BGR2GRAY)
+    grayConv = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     integral_image = integral(grayConv)
 
     # Looping through the array of contours
@@ -98,45 +97,41 @@ def recognition(image, threshold):
     cv2.imshow('dilateW', dilateW)
     cv2.waitKey(0)
 
-    return image
+    return 0;
 
 
 if __name__ == "__main__":
     # Read original image
-    for i in range(4, 6):
-        # img = imread(f'{i}'"_noise.png")
+    for i in range(2, 6):
+        img = imread(f'{i}'"_noise.png")
         imgOG = imread(f'{i}'"_original.png")
 
         # Turn image in gray scale value
         gray = cv2.imread(f'{i}'"_noise.png", cv2.IMREAD_GRAYSCALE)
-        grayOG = cv2.imread(f'{i}'"1_original.png", cv2.IMREAD_GRAYSCALE)
+        # grayOG = cv2.imread(f'{i}'"_original.png", cv2.IMREAD_GRAYSCALE)
 
         # Get values with two different mask size
-        # median3x3 = median_filter(gray, 3)
+        median = median_filter(gray)
 
         # Show result images
-        cv2.namedWindow('median filter with 3x3 mask', cv2.WINDOW_NORMAL)
-        imshow("median filter with 3x3 mask", imgOG)
+        cv2.namedWindow(f'{i}''Median filter', cv2.WINDOW_NORMAL)
+        imshow(f'{i}'"Median filter", median)
         cv2.waitKey(0)
 
         # Binary threshold
         _, thr = cv2.threshold(imgOG, 200, 255, cv2.THRESH_BINARY)
-        cv2.namedWindow('thresh_binary', cv2.WINDOW_NORMAL)
-        imshow("thresh_binary", thr)
+        cv2.namedWindow(f'{i}''thresh_binary', cv2.WINDOW_NORMAL)
+        imshow(f'{i}'"thresh_binary", thr)
         cv2.waitKey(0)
 
         # Converting color to gray and setting new threshold
         grayConv = cv2.cvtColor(imgOG, cv2.COLOR_BGR2GRAY)
         _, thr2 = cv2.threshold(grayConv, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
-        cv2.namedWindow('thresh_binary', cv2.WINDOW_NORMAL)
-        imshow("thresh_binary", thr2)
-        # cv2.waitKey(0)
+        cv2.namedWindow(f'{i}''thresh_binary', cv2.WINDOW_NORMAL)
+        imshow(f'{i}'"thresh_binary", thr2)
+        cv2.waitKey(0)
 
         # Recognition of text and making rectangles around them
         rectangle = recognition(imgOG, thr2)
 
-        # Showing the results of the image recognition
-        cv2.namedWindow('results', cv2.WINDOW_NORMAL)
-        cv2.imshow('results', rectangle)
-        cv2.waitKey(0)
         waitKey(0)
