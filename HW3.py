@@ -18,16 +18,18 @@ def extract_local_features(path):
 # Extract Database
 print('Extracting features...')
 labels = []
-train_descs = np.zeros((0, 128))
-for folder in train_folders:
-    files = os.listdir(folder)
-    for file in files:
-        path = os.path.join(folder, file)
-        desc = extract_local_features(path)
-        if desc is None:
-            continue
-        train_descs = np.concatenate((train_descs, desc), axis=0)
-        labels.append(train_folders.index(folder))
+w = [64, 128, 500, 800, 1024]
+for i in w:
+    train_descs = np.zeros((0, w))
+    for folder in train_folders:
+        files = os.listdir(folder)
+        for file in files:
+            path = os.path.join(folder, file)
+            desc = extract_local_features(path)
+            if desc is None:
+                continue
+            train_descs = np.concatenate((train_descs, desc), axis=0)
+            labels.append(train_folders.index(folder))
 
 # Create vocabulary
 print('Creating vocabulary...')

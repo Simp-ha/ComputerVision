@@ -27,18 +27,19 @@ bow_desc = descriptor_extractor.compute(img, kp)
 print('k-NN testing shows that...')
 
 knn = cv.ml.KNearest_create()
-response, results, neighbours, dist = knn.findNearest(bow_desc, 3)
-
-if response ==1:
-    print("It's a brown bear")
-elif response == 2:
-    print("It's a brown bear")
-elif response == 3:
-    print("It's a dolphin")
-elif response == 4:
-    print("It's a giraffe")
-elif response == 5:
-    print("It's a squirrel")
+k = [2, 3, 5, 9]
+for i in k:
+    response, results, neighbours, dist = knn.findNearest(bow_desc, i)
+    if response == 0:
+        print("It's a brown bear")
+    elif response == 1:
+        print("It's a brown bear")
+    elif response == 2:
+        print("It's a dolphin")
+    elif response == 3:
+        print("It's a giraffe")
+    elif response == 4:
+        print("It's a squirrel")
 
 print('svm testing shows that... ')
 # Load SVM
@@ -47,6 +48,6 @@ svm = svm.load('svm')
 response = svm.predict(bow_desc, flags=cv.ml.STAT_MODEL_RAW_OUTPUT)
 
 if response[1] < 0:
-    print('It is a brown_bear')
+    print('It is a ')
 else:
-    print('It ')
+    print('It is not a ')
