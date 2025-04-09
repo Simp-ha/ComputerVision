@@ -1,8 +1,6 @@
-# `|Computer Vision|`
+# |**Computer Vision**|
 
-D.U.Th. semester projects for Computer Vision.
-
----
+_[D.U.Th. semester projects for Computer Vision.]_
 
 # HW1 # Text Recognition using Computer Vision
 
@@ -53,6 +51,10 @@ To install the required libraries, you can use pip:
 pip install opencv-python==3.2.17
 ```
 
+---
+
+---
+
 # HW2 # Panorama Generation using OpenCV
 
 ## Purpose
@@ -99,5 +101,3 @@ To install the required libraries, you can use pip:
 ```bash
 pip install opencv-python==3.2.17
 ```
-
-# HW3
