@@ -1,0 +1,203 @@
+#BF MATCHER+ CROSCHECK
+Time for matching 0.02200174331665039 sec for matching images: 0 with 1 of OpenPano/flower
+Time for matching 0.02100062370300293 sec for matching images: 2 with 3 of OpenPano/flower
+Time for matching 0.022001266479492188 sec for matching images: 0 with 1 of OpenPano/flower
+The execution time for SIFT in OpenPano/flower is 30.182617902755737 seconds
+Time for matching 0.659003496170044 sec for matching images: 0 with 1 of OpenPano/flower
+Time for matching 0.22699856758117676 sec for matching images: 2 with 3 of OpenPano/flower
+Time for matching 0.8639981746673584 sec for matching images: 0 with 1 of OpenPano/flower
+The execution time for SURF in OpenPano/flower is 28.547024965286255 seconds
+
+# Nested for's
+#OFFICE
+Time for matching 0.022002220153808594 sec for matching images: 0 with 1 of GES-50
+Time for matching 0.02100205421447754 sec for matching images: 2 with 3 of GES-50
+Time for matching 0.019998788833618164 sec for matching images: 0 with 1 of GES-50
+The execution time for SIFT in GES-50 is 300.31395745277405 seconds
+Time for matching 136.73778796195984 sec for matching images: 0 with 1 of GES-50
+Time for matching 153.45000076293945 sec for matching images: 2 with 3 of GES-50
+Time for matching 380.30822801589966 sec for matching images: 0 with 1 of GES-50
+The execution time for SURF in GES-50 is 976.1518642902374 seconds
+
+#CHURCH
+Time for matching 0.0689992904663086 sec for matching images: 0 with 1 of NISwGSP
+Time for matching 0.020000696182250977 sec for matching images: 2 with 3 of NISwGSP
+Time for matching 0.21600055694580078 sec for matching images: 0 with 1 of NISwGSP
+
+#FLOWER
+Time for matching 0.01999831199645996 sec for matching images: 0 with 1 of OpenPano/flower
+Time for matching 0.021001815795898438 sec for matching images: 2 with 3 of OpenPano/flower
+Time for matching 0.02000117301940918 sec for matching images: 0 with 1 of OpenPano/flower
+The execution time for SIFT in OpenPano/flower is 33.92060112953186 seconds
+Time for matching 0.2799975872039795 sec for matching images: 0 with 1 of OpenPano/flower
+Time for matching 0.21299958229064941 sec for matching images: 2 with 3 of OpenPano/flower
+Time for matching 0.8630001544952393 sec for matching images: 0 with 1 of OpenPano/flower
+The execution time for SURF in OpenPano/flower is 27.503997802734375 seconds
+
+#Mine -> ha4
+Time for matching 0.02000117301940918 sec for matching images: 0 with 1 of mine
+Time for matching 0.014999866485595703 sec for matching images: 2 with 3 of mine
+Time for matching 0.021001815795898438 sec for matching images: 4 with 5 of mine
+Time for matching 0.02200007438659668 sec for matching images: 0 with 1 of mine
+Time for matching 0.019999980926513672 sec for matching images: 0 with 1 of mine
+The execution time for SIFT in mine is 168.1314799785614 seconds
+Time for matching 0.11699962615966797 sec for matching images: 0 with 1 of mine
+Time for matching 0.03399825096130371 sec for matching images: 2 with 3 of mine
+Time for matching 0.9390044212341309 sec for matching images: 4 with 5 of mine
+Time for matching 0.218001127243042 sec for matching images: 0 with 1 of mine
+Time for matching 0.2610006332397461 sec for matching images: 0 with 1 of mine
+The execution time for SURF in mine is 189.996643781662 seconds
+
+#Mine
+Time for matching 0.011002302169799805 sec for matching images: 0 with 1 of mine
+Time for matching 0.01999974250793457 sec for matching images: 2 with 3 of mine
+Time for matching 0.021000146865844727 sec for matching images: 4 with 5 of mine
+Time for matching 0.019999980926513672 sec for matching images: 0 with 1 of mine
+Time for matching 0.06699776649475098 sec for matching images: 0 with 1 of mine
+The execution time for SIFT in mine is 734.2030012607574 seconds
+Time for matching 0.04199790954589844 sec for matching images: 0 with 1 of mine
+Time for matching 0.8830032348632812 sec for matching images: 2 with 3 of mine
+Time for matching 0.45200085639953613 sec for matching images: 4 with 5 of mine
+Time for matching 0.35899877548217773 sec for matching images: 0 with 1 of mine
+Time for matching 1.0979998111724854 sec for matching images: 0 with 1 of mine
+The execution time for SURF in mine is 655.3834137916565 seconds
+
+#Flower
+SIFT 
+MATCHES: 79
+Time spent: 0.020002365112304688 sec 	Images: 0 - 1 	Folder: OpenPano/flower
+MATCHES: 49
+Time spent: 0.020001888275146484 sec 	Images: 2 - 3 	Folder: OpenPano/flower
+MATCHES: 15
+Time spent: 0.021000385284423828 sec 	Images: 0 - 1 	Folder: OpenPano/flower
+Folder: OpenPano/flower	ExTime: 29.178443431854248 seconds
+SURF 
+MATCHES: 367
+Time spent: 0.2960011959075928 sec 	Images: 0 - 1 	Folder: OpenPano/flower
+MATCHES: 184
+Time spent: 0.22100067138671875 sec 	Images: 2 - 3 	Folder: OpenPano/flower
+MATCHES: 105
+Time spent: 0.3679971694946289 sec 	Images: 0 - 1 	Folder: OpenPano/flower
+Folder: OpenPano/flower	ExTime: 27.651862621307373 seconds
+
+#Vectorized operations
+#Flower
+SIFT
+MATCHES: 79
+Time spent: 0.020998477935791016 sec 	Images: 0 - 1 	Folder: OpenPano/flower
+MATCHES: 49
+Time spent: 0.019999980926513672 sec 	Images: 2 - 3 	Folder: OpenPano/flower
+MATCHES: 15
+Time spent: 0.021000146865844727 sec 	Images: 0 - 1 	Folder: OpenPano/flower
+Folder: OpenPano/flower	ExTime: 4.967998504638672 seconds
+SURF 
+MATCHES: 367
+Time spent: 0.658001184463501 sec 	    Images: 0 - 1 	Folder: OpenPano/flower
+MATCHES: 184
+Time spent: 0.22700285911560059 sec 	Images: 2 - 3 	Folder: OpenPano/flower
+MATCHES: 105
+Time spent: 0.37400007247924805 sec 	Images: 0 - 1 	Folder: OpenPano/flower
+Folder: OpenPano/flower	ExTime: 5.132996320724487 seconds
+
+#OFFICE
+SIFT 
+MATCHES: 20
+Time spent: 0.021000146865844727 sec 	Images: 0 - 1 	Folder: GES-50
+MATCHES: 19
+Time spent: 0.020002126693725586 sec 	Images: 2 - 3 	Folder: GES-50
+MATCHES: 11
+Time spent: 0.020999431610107422 sec 	Images: 0 - 1 	Folder: GES-50
+Folder: GES-50	ExTime: 55.554999113082886 seconds
+SURF 
+MATCHES: 511
+Time spent: 163.42701029777527 sec 	    Images: 0 - 1 	Folder: GES-50
+MATCHES: 980
+Time spent: 188.0524389743805 sec 	    Images: 2 - 3 	Folder: GES-50
+MATCHES: 257
+Time spent: 456.7039303779602 sec 	    Images: 0 - 1 	Folder: GES-50
+Folder: GES-50	ExTime: 859.6598207950592 seconds
+
+#MINE
+SIFT 
+MATCHES: 51
+Time spent: 0.01100015640258789 sec 	Images: 0 - 1 	Folder: mine
+MATCHES: 168
+Time spent: 0.01999974250793457 sec 	Images: 2 - 3 	Folder: mine
+MATCHES: 150
+Time spent: 0.019999980926513672 sec 	Images: 4 - 5 	Folder: mine
+MATCHES: 128
+Time spent: 0.020999670028686523 sec 	Images: 0 - 1 	Folder: mine
+MATCHES: 47
+Time spent: 0.07100057601928711 sec 	Images: 0 - 1 	Folder: mine
+Folder: mine	ExTime: 159.68384337425232 seconds
+
+SURF
+MATCHES: 56
+Time spent: 0.04800152778625488 sec 	Images: 0 - 1 	Folder: mine
+MATCHES: 549
+Time spent: 0.37400102615356445 sec 	Images: 2 - 3 	Folder: mine
+MATCHES: 567
+Time spent: 0.45000362396240234 sec 	Images: 4 - 5 	Folder: mine
+MATCHES: 103
+Time spent: 0.9240038394927979 sec 	    Images: 0 - 1 	Folder: mine
+MATCHES: 66
+Time spent: 2.189002275466919 sec 	    Images: 0 - 1 	Folder: mine
+Folder: mine	ExTime: 115.28011012077332 seconds
+
+#Mine ha4
+SIFT
+MATCHES: 104
+Time spent: 0.021000385284423828 sec 	Images: 0 - 1 	Folder: mine
+MATCHES: 24
+Time spent: 0.01600050926208496 sec 	Images: 2 - 3 	Folder: mine
+MATCHES: 10
+Time spent: 0.023001432418823242 sec 	Images: 4 - 5 	Folder: mine
+MATCHES: 31
+Time spent: 0.019999980926513672 sec 	Images: 0 - 1 	Folder: mine
+MATCHES: 1
+Time spent: 0.01999950408935547 sec 	Images: 0 - 1 	Folder: mine
+
+#CHURCH
+SIFT
+MATCHES: 21
+Time spent: 0.021001338958740234 sec 	Images: 0 - 1 	Folder: NISwGSP
+MATCHES: 5
+Time spent: 0.022001028060913086 sec 	Images: 2 - 3 	Folder: NISwGSP
+MATCHES: 3
+Time spent: 0.020999908447265625 sec 	Images: 0 - 1 	Folder: NISwGSP
+
+SURF 
+MATCHES: 1433
+Time spent: 159.913339138031 sec 	Images: 0 - 1 	Folder: NISwGSP
+MATCHES: 2006
+Time spent: 367.78818249702454 sec 	Images: 2 - 3 	Folder: NISwGSP
+MATCHES: 417
+Time spent: 310.94255447387695 sec 	Images: 0 - 1 	Folder: NISwGSP
+Folder: NISwGSP	ExTime: 878.1359324455261 seconds
+SURF 
+MATCHES: 367
+Time spent: 0.31600189208984375 sec 	Images: 0 - 1 	Folder: OpenPano/flower
+MATCHES: 184
+Time spent: 0.2129993438720703 sec 	Images: 2 - 3 	Folder: OpenPano/flower
+MATCHES: 105
+Time spent: 0.36901235580444336 sec 	Images: 0 - 1 	Folder: OpenPano/flower
+Folder: OpenPano/flower	ExTime: 5.153202295303345 seconds
+SIFT 
+MATCHES: 79
+Time spent: 0.021000385284423828 sec 	Images: 0 - 1 	Folder: OpenPano/flower
+MATCHES: 49
+Time spent: 0.021000146865844727 sec 	Images: 2 - 3 	Folder: OpenPano/flower
+MATCHES: 15
+Time spent: 0.01999807357788086 sec 	Images: 0 - 1 	Folder: OpenPano/flower
+Folder: OpenPano/flower	ExTime: 5.049534559249878 seconds
+SIFT 
+MATCHES: 51
+Time spent: 0.013999462127685547 sec 	Images: 0 - 1 	Folder: mine
+MATCHES: 168
+Time spent: 0.021001815795898438 sec 	Images: 2 - 3 	Folder: mine
+MATCHES: 150
+Time spent: 0.022001028060913086 sec 	Images: 4 - 5 	Folder: mine
+MATCHES: 128
+Time spent: 0.02100086212158203 sec 	Images: 0 - 1 	Folder: mine
+MATCHES: 47
+Time spent: 0.09761714935302734 sec 	Images: 0 - 1 	Folder: mine
