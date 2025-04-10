@@ -40,19 +40,6 @@ For each detected line, the following metrics are calculated and displayed as pr
 
 ---
 
-## Requirements
-
-- Python 3.6
-- OpenCV v.3.2.17
-
-To install the required libraries, you can use pip:
-
-```bash
-pip install opencv-python==3.2.17
-```
-
----
-
 ---
 
 # HW2 # Panorama Generation using OpenCV
@@ -91,13 +78,13 @@ The goal of this project is to implement an algorithm that generates panoramas f
 
 ---
 
-## Requirements
+# Requirements
 
 - Python 3.6
 - OpenCV v.3.2.17
 
 To install the required libraries, you can use pip:
 
-```bash
-pip install opencv-python==3.2.17
+```shell
+pip install -r requirements.txt
 ```
