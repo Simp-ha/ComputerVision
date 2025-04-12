@@ -88,3 +88,109 @@ To install the required libraries, you can use pip:
 ```shell
 pip install -r requirements.txt
 ```
+
+# HW3
+
+# Part A – Multi-class Classification using OpenCV (Bag of Visual Words)
+
+You will implement a Python program using the **OpenCV** library to address the problem of **multi-class image classification**. The implementation includes the following steps:
+
+### 1. Creation of Visual Vocabulary (BoVW using KMeans)
+
+- Generate a visual vocabulary using the **K-Means** clustering algorithm.
+- All training images will be used to create this vocabulary.
+
+### 2. Feature Extraction from Training Images
+
+- Extract image descriptors using the **BoVW model**, based on the vocabulary from Step 1.
+
+### 3. Classification of Images Using Two Classifiers
+
+- Using the results of Step 2, classify images using:
+
+#### a) k-Nearest Neighbors (k-NN) algorithm
+
+#### b) One-versus-all SVM:
+
+- One **SVM classifier** will be trained for each class.
+
+### 4. System Evaluation
+
+Using the test dataset, evaluate the **accuracy** of the classification system:
+
+- Measure overall classification accuracy.
+- Measure per-class accuracy.
+- Evaluate the effect of the following parameters:
+
+#### a) Vocabulary size:
+
+- Use **at least 5 different vocabulary sizes**.
+- Select the vocabulary size that gives the **highest accuracy**.
+
+#### b) Number of nearest neighbors (k) in k-NN:
+
+- Find and report the **optimal k value** for this problem.
+
+---
+
+# Part B – CNN Architectures using Keras/Tensorflow
+
+You will implement a **convolutional neural network architecture** (CNN) in Python using **Keras-TensorFlow**, targeting a **multi-class classification** problem.
+
+> All implementations should be in **Jupyter Notebooks**, using **Google Colab**.
+
+You will implement **TWO different architectures**:
+
+### i. Custom CNN (Non Pre-trained)
+
+- A **newly created CNN** architecture designed specifically for this classification task, following lab guidelines.
+
+### ii. Pre-trained CNN
+
+- Choose a **pre-trained network** (e.g., VGG16, ResNet50, MobileNet, etc.).
+- Provide a **brief analysis of the selected architecture**.
+
+### For Both Architectures, Include:
+
+**A)** Full description of the architecture and its layers  
+**B)** Quantitative evaluation (test set accuracy)  
+**C)** Training details & justification:
+
+- Number of epochs
+- Input size
+- Batch size
+- Callbacks (e.g., EarlyStopping)
+- Preprocessing steps
+- Data augmentation techniques
+
+---
+
+# Part C – Object Detection for Traffic Sign Detection
+
+You will implement a **CNN-based object detection architecture in Python** for detecting **traffic signs**.
+
+> You may use **Keras-TensorFlow** or **PyTorch** libraries.  
+> Use **Jupyter Notebook** on **Google Colab** for implementation and training.
+
+You will train and compare **TWO object detection architectures**:
+
+### i. Two-stage Detector: Faster R-CNN
+
+- As presented during lab sessions.
+
+### ii. One-stage Detector: YOLOv3
+
+- You may use a YOLOv3 implementation of your choice (e.g., from `ultralytics`, or your own custom code).
+
+### For Both Approaches, Include:
+
+**A)** Full description of the architecture and layers used  
+**B)** Evaluation using **mean Average Precision (mAP)** on the test set  
+**C)** Description & justification of training procedure:
+
+- Number of epochs
+- Input size
+- Batch size
+- Callbacks
+- Preprocessing
+- Data augmentation
